@@ -1,0 +1,34 @@
+mat-card {
+  margin: 4rem;
+  padding: 2rem 2rem 4rem 2rem;
+  background-color: #e9ecef;
+}
+
+mat-card-subtitle {
+  font-size: large;
+}
+
+mat-card-title {
+  font-size: 2rem;
+}
+
+h1 {
+  margin-bottom: 0.2rem;
+}
+
+mat-card-subtitle {
+  font-size: 1.5rem;
+}
+
+mat-card-content {
+  margin-top: 0.5rem;
+}
+
+.mat-card > :first-child,
+.mat-card-content > :first-child {
+  margin-top: 2rem;
+}
+
+content {
+  font-size: 1.1rem;
+}

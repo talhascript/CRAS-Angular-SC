@@ -1,0 +1,75 @@
+<div class="center">
+  <mat-card class="card">
+    <img
+      [src]="user?.imagePath || 'http://localhost:3000/default.png'"
+      alt="profile img"
+      width="200px"
+      height="200px"
+    />
+    <button
+      class="change-profile-btn"
+      mat-raised-button
+      color="primary"
+      (click)="updateProfileImage()"
+    >
+      Change Profile Image
+    </button>
+    <br />
+
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        placeholder="Username"
+        disabled="true"
+        [value]="user?.username"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        placeholder="Password"
+        disabled="true"
+        value="*********"
+      />
+    </mat-form-field>
+
+    <div style="width: 100%; display: flex; justify-content: flex-end">
+      <button mat-raised-button color="primary" (click)="updatePassword()">
+        Change Password
+      </button>
+    </div>
+    <br />
+
+    <mat-form-field appearance="outline">
+      <mat-label>Matric Number</mat-label>
+      <input
+        matInput
+        placeholder="A18CS0000"
+        [value]="user?.matricNo"
+        disabled="true"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput placeholder="John Doe" [(ngModel)]="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="john@email.com"
+        [(ngModel)]="email"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="updateNameAndEmail()">
+      Save
+    </button>
+  </mat-card>
+</div>

@@ -1,0 +1,24 @@
+<mat-card *ngIf="user">
+  <mat-card-title>
+    <h3>Welcome {{ user.username }} (student)</h3>
+  </mat-card-title>
+  <mat-card-subtitle>
+    Are you here for college room application?
+  </mat-card-subtitle>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="user.application == 1"
+    [routerLink]="['/student/application/college']"
+  >
+    Apply Now >>
+  </button>
+  <br /><br />
+  <button
+    mat-raised-button
+    color="primary"
+    [routerLink]="['/student/application/history']"
+  >
+    View Application >>
+  </button>
+</mat-card>

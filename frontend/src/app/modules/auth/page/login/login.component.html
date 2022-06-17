@@ -1,0 +1,49 @@
+<div class="center main">
+  <mat-card class="center">
+    <h2><b>Login</b></h2>
+    <div>
+      <form (keydown.enter)="onLogin()">
+        <mat-form-field class="form-field">
+          <mat-label>Username</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="usernameFormControl"
+            placeholder="johndoe"
+          />
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Username is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="usernameFormControl.hasError('minlength')">
+            Username must be longer than 5 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            [formControl]="passwordFormControl"
+            placeholder="password"
+          />
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <button
+      class="login-btn"
+      mat-raised-button
+      color="primary"
+      (click)="onLogin()"
+    >
+      Login
+    </button>
+    <p class="register-container">
+      Not a registered user?
+      <a mat-button [routerLink]="'/register'">Register Now</a>
+    </p>
+  </mat-card>
+</div>

@@ -1,0 +1,36 @@
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn {
+  width: 80%;
+  margin: 1rem;
+}
+
+.main {
+  padding: 1rem;
+  width: 100%;
+  min-height: calc(100% - 65px);
+  min-height: -o-calc(100% - 65px); /* opera */
+  min-height: -webkit-calc(100% - 65px); /* google, safari */
+  min-height: -moz-calc(100% - 65px); /* firefox */
+  background-color: rgb(235, 235, 235) !important;
+}
+
+mat-card {
+  padding: 2rem;
+}
+
+.form-field {
+  width: 90%;
+  width: -webkit-fill-available;
+  margin: 1rem;
+}
+
+.register-container {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,22 @@
+<div class="center main">
+  <mat-card>
+    <h3>Edit College</h3>
+    <div>
+      <form>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>College Name</mat-label>
+          <input type="text" matInput [formControl]="collegeNameFormControl" />
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>College address</mat-label>
+          <input type="text" matInput [formControl]="addressFormControl" />
+        </mat-form-field>
+      </form>
+    </div>
+    <button mat-raised-button color="primary" (click)="update()">Update</button>
+    <button mat-raised-button color="alert" [routerLink]="'/admin/college'">
+      Cancel
+    </button>
+  </mat-card>
+</div>

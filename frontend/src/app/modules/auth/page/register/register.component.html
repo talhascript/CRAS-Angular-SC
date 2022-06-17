@@ -1,0 +1,133 @@
+<div class="center main">
+  <mat-card class="center">
+    <h2><b>Registration</b></h2>
+    <div>
+      <form [formGroup]="registrationForm">
+        <mat-form-field class="form-field">
+          <mat-label>Username</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="username"
+            placeholder="johndoe"
+          />
+          <mat-error
+            *ngIf="registrationForm.get('username')?.hasError('required')"
+          >
+            Username is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="registrationForm.get('username')?.hasError('minlength')"
+          >
+            Username must be longer than 5 characters
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+      <form [formGroup]="passwordForm">
+        <mat-form-field class="form-field">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            placeholder="password"
+          />
+          <mat-error *ngIf="passwordForm.get('password')?.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="passwordForm.get('password')?.hasError('minlength')"
+          >
+            Password must be longer than 5 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="confirmPassword"
+            placeholder="confirm password"
+            [errorStateMatcher]="matcher"
+          />
+          <mat-error *ngIf="passwordForm.hasError('notMatch')">
+            Password does not match
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+      <form [formGroup]="registrationForm">
+        <mat-form-field class="form-field">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="johndoe@email.com"
+          />
+          <mat-error
+            *ngIf="registrationForm.get('email')?.hasError('required')"
+          >
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
+            Please input a valid email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Full Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="name"
+            placeholder="john doe"
+          />
+          <mat-error *ngIf="registrationForm.get('name')?.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="registrationForm.get('name')?.hasError('minlength')"
+          >
+            Name must be longer than 3 characters
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Matric Number</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="matricNo"
+            placeholder="A18CS0000"
+          />
+          <mat-error
+            *ngIf="registrationForm.get('matricNo')?.hasError('required')"
+          >
+            Matric number is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="
+              registrationForm.get('matricNo')?.hasError('minlength') ||
+              registrationForm.get('matricNo')?.hasError('maxlength')
+            "
+          >
+            Matric must be 9 characters
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <button
+      class="register-btn"
+      mat-raised-button
+      color="primary"
+      (click)="onRegister()"
+    >
+      Register
+    </button>
+    <p class="login-container">
+      Already a registered user?
+      <a mat-button [routerLink]="'/login'">Login Now</a>
+    </p>
+  </mat-card>
+</div>

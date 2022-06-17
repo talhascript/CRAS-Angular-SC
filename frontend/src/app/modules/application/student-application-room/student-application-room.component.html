@@ -1,0 +1,43 @@
+<mat-card *ngIf="rooms">
+  <mat-card-title>
+    <h3>Select a Room</h3>
+  </mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="rooms" class="mat-elevation-z1">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="roomName">
+        <th mat-header-cell *matHeaderCellDef>Room Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.roomName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="roomType">
+        <th mat-header-cell *matHeaderCellDef>Room Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.roomType }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="capacity">
+        <th mat-header-cell *matHeaderCellDef>Capacity</th>
+        <td mat-cell *matCellDef="let element">{{ element.capacity }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="occupied">
+        <th mat-header-cell *matHeaderCellDef>Occupied</th>
+        <td mat-cell *matCellDef="let element">{{ element.occupied }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="operation">
+        <th mat-header-cell *matHeaderCellDef>Operation</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="applyForRoom(element.roomID)">
+            Apply
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <br />
+  </mat-card-content>
+</mat-card>

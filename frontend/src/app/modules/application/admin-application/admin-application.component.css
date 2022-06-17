@@ -1,0 +1,40 @@
+.container {
+  padding-bottom: 1rem;
+}
+
+mat-card {
+  margin: 4rem;
+  padding: 2rem 2rem 4rem 2rem;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.center {
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+button {
+  margin-right: 0.5rem;
+}
+
+mat-header-cell,
+mat-cell {
+  justify-content: center;
+}
+
+th.mat-header-cell {
+  text-align: center;
+}
+
+.mat-cell {
+  text-align: center;
+}

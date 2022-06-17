@@ -1,0 +1,26 @@
+mat-card {
+  margin: 4rem;
+  padding: 2rem 2rem 4rem 2rem;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  color: #fff;
+  background-color: #343a40;
+}
+
+mat-header-cell,
+mat-cell {
+  justify-content: center;
+}
+
+th.mat-header-cell {
+  text-align: center;
+}
+
+.mat-cell {
+  text-align: center;
+}

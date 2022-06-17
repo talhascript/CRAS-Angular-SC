@@ -1,0 +1,34 @@
+<div class="container">
+  <img
+    [src]="displayedImage || data.defaultImage"
+    alt="image"
+    width="300px"
+    height="300px"
+  />
+  <input
+    hidden="true"
+    #fileInput
+    accept="image/*"
+    type="file"
+    (change)="onFileChanged($event)"
+  />
+  <button
+    class="upload-btn"
+    mat-raised-button
+    color="primary"
+    (click)="fileInput.click()"
+  >
+    Upload Image
+  </button>
+  <span class="btns-container">
+    <button mat-raised-button color="warn" (click)="onDismiss()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmitImage()"
+      [disabled]="!selectedFile"
+    >
+      Save
+    </button>
+  </span>
+</div>

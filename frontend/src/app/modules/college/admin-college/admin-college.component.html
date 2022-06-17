@@ -1,0 +1,77 @@
+<div class="container">
+  <mat-card style="justify-content: space-between">
+    <mat-card-title><h3>Manage College</h3> </mat-card-title>
+    <mat-card-content
+      ><table mat-table [dataSource]="colleges" class="mat-elevation-z1">
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="collegeID">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="collegeName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.collegeName }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="addedDate">
+          <th mat-header-cell *matHeaderCellDef>Added Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.addedDate | date: "dd-MM-yyyy h:mm a" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operation">
+          <th mat-header-cell *matHeaderCellDef>Operation</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/admin/college/edit_college']"
+              [queryParams]="{ id: element.collegeID }"
+            >
+              Edit
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="onDelete(element.collegeID)"
+            >
+              Delete
+            </button>
+            <button
+              mat-raised-button
+              color="green"
+              [routerLink]="['/admin/college/room']"
+              [queryParams]="{ id: element.collegeID }"
+            >
+              View Room
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <br />
+      <button
+        class="center"
+        mat-raised-button
+        [routerLink]="['/admin/college/add_college']"
+      >
+        Add College
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,98 @@
+<div class="container">
+  <mat-card style="justify-content: space-between">
+    <mat-card-title><h3>Manage Room</h3> </mat-card-title>
+    <mat-card-content
+      ><table mat-table [dataSource]="rooms" class="mat-elevation-z1">
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="roomID">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="roomName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.roomName }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="roomType">
+          <th mat-header-cell *matHeaderCellDef>Room Type</th>
+          <td mat-cell *matCellDef="let element">{{ element.roomType }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="addedDate">
+          <th mat-header-cell *matHeaderCellDef>Added Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.addedDate | date: "dd-MM-yyyy h:mm a" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="activated">
+          <th mat-header-cell *matHeaderCellDef>Activation</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.activated ? "Activated" : "Deactivated" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef>Capacity</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.capacity }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="occupied">
+          <th mat-header-cell *matHeaderCellDef>Occupied</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.occupied }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operation">
+          <th mat-header-cell *matHeaderCellDef>Operation</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/admin/college/room/edit_room']"
+              [queryParams]="{ id: id, roomID: element.roomID }"
+            >
+              Edit
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="onDelete(element.roomID)"
+            >
+              Delete
+            </button>
+            <button
+              mat-raised-button
+              color="green"
+              (click)="changeActivation(element.roomID, element.activated)"
+            >
+              {{ element.activated ? "Deactivate" : "Activate" }}
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <br />
+      <button
+        class="center"
+        mat-raised-button
+        [routerLink]="['/admin/college/room/add_room']"
+        [queryParams]="{ id: id }"
+      >
+        Add Room
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

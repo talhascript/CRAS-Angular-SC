@@ -1,0 +1,23 @@
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 4rem;
+}
+
+.change-profile-btn {
+  margin: 1rem;
+}
+
+.mat-form-field {
+  width: 400px;
+}

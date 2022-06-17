@@ -1,0 +1,52 @@
+<div class="center main">
+  <mat-card>
+    <h3>Edit Room</h3>
+    <div>
+      <form>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Room Name</mat-label>
+          <input type="text" matInput [formControl]="roomNameFormControl" />
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Room Type</mat-label>
+          <mat-select
+            [(value)]="roomType"
+            (valueChange)="changeCapacity()"
+            required
+          >
+            <mat-option>select an option</mat-option>
+            <mat-option value="Double">Double</mat-option>
+            <mat-option value="Single without Toilet"
+              >Single Without Toilet</mat-option
+            >
+            <mat-option value="Single with Toilet"
+              >Single With Toilet</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Capacity</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="capacityFormControl"
+            readonly
+          />
+        </mat-form-field>
+      </form>
+    </div>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Update
+    </button>
+    <button
+      mat-raised-button
+      color="alert"
+      [routerLink]="'/admin/college/room'"
+      [queryParams]="{ id: id }"
+    >
+      Cancel
+    </button>
+  </mat-card>
+</div>

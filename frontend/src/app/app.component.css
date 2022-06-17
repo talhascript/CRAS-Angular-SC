@@ -1,0 +1,30 @@
+.flex-space-between {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a {
+  margin: 0.5rem;
+}
+
+.profile-btn {
+  margin: 0.5rem;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+
+.logout-btn-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.active{
+  color:#673ab7
+}

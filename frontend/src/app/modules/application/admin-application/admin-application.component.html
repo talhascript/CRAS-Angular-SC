@@ -1,0 +1,92 @@
+<div class="container">
+  <mat-card style="justify-content: space-between">
+    <mat-card-title>
+      <h3>Application List</h3>
+    </mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="applications" class="mat-elevation-z1">
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="applicationDate">
+          <th mat-header-cell *matHeaderCellDef>Application Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.applicationDate | date: "dd-MM-yyyy h:mm a" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Student Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="collegeName">
+          <th mat-header-cell *matHeaderCellDef>College</th>
+          <td mat-cell *matCellDef="let element">{{ element.collegeName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="roomName">
+          <th mat-header-cell *matHeaderCellDef>Room</th>
+          <td mat-cell *matCellDef="let element">{{ element.roomName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="roomType">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let element">{{ element.roomType }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="
+                onApprove(
+                  element.applicationID,
+                  element.studentID,
+                  element.roomID
+                )
+              "
+            >
+              Approve
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="
+                onUnapprove(
+                  element.applicationID,
+                  element.studentID,
+                  element.roomID
+                )
+              "
+            >
+              Unapprove
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="8">There is no application yet</td>
+        </tr>
+      </table>
+      <br />
+      <button
+        class="center"
+        mat-raised-button
+        [routerLink]="['/admin/application/history']"
+      >
+        View History
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

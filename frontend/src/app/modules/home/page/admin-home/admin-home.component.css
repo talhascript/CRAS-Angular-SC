@@ -1,0 +1,7 @@
+mat-card {
+  margin: 4rem;
+  padding: 4rem 2rem;
+}
+mat-card-subtitle {
+  font-size: large;
+}

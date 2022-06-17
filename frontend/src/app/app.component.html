@@ -1,0 +1,79 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <a mat-button [routerLink]="'home'">
+      <h1>CRAS</h1>
+    </a>
+    <span class="flex-space-between">
+      <!-- Not logged in -->
+      <ng-container *ngIf="!(authService.isLoggedIn$ | async)">
+        <div></div>
+        <div>
+          <a mat-raised-button [routerLink]="'login'" color="primary">
+            Login
+          </a>
+          <a mat-stroked-button [routerLink]="'register'" color="primary">
+            Register
+          </a>
+        </div>
+      </ng-container>
+      <!-- Logged in -->
+      <ng-container *ngIf="authService.isLoggedIn$ | async">
+        <div *ngIf="authService.isAdmin$ | async">
+          <a mat-button [routerLink]="'/admin/home'"> Home </a>
+          <a mat-button [routerLink]="'/admin/college'"> College </a>
+          <a mat-button [routerLink]="'/admin/application'"> Application </a>
+        </div>
+        <div *ngIf="!(authService.isAdmin$ | async)">
+          <a mat-button [routerLink]="'/student/home'"> Home </a>
+          <a mat-button [routerLink]="'/student/application/college'">
+            College Application
+          </a>
+          <a mat-button [routerLink]="'/student/application/history'">
+            Application History</a
+          >
+          <a mat-button [routerLink]="'/profile'"> Profile </a>
+        </div>
+
+        <div class="profile-btn">
+          <button mat-button [matMenuTriggerFor]="menu">
+            {{ (authService.user$ | async)?.username }}
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <button
+              *ngIf="!(authService.isAdmin$ | async)"
+              mat-menu-item
+              routerLink="/student/application/college"
+            >
+              <mat-icon>description</mat-icon>
+              <span> College Application</span>
+            </button>
+            <button
+              *ngIf="!(authService.isAdmin$ | async)"
+              mat-menu-item
+              routerLink="/student/application/history"
+            >
+              <mat-icon>history</mat-icon>
+              <span> Application History</span>
+            </button>
+            <button
+              *ngIf="!(authService.isAdmin$ | async)"
+              mat-menu-item
+              routerLink="/profile"
+            >
+              <mat-icon>account_circle</mat-icon>
+              <span> My Profile</span>
+            </button>
+            <span class="logout-btn-container">
+              <button mat-raised-button (click)="logOut()" color="warn">
+                Log Out
+              </button>
+            </span>
+          </mat-menu>
+        </div>
+      </ng-container>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
