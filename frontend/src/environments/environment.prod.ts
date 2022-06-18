@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.typo.ninja',
+  apiUrl: 'http://localhost:6868',
 };

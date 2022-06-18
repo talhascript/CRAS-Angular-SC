@@ -7,6 +7,11 @@
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
+
+CREATE DATABASE IF NOT EXISTS college_application;
+
+USE college_application;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -20,11 +25,14 @@ SET time_zone = "+00:00";
 -- Database: `college_application`
 --
 
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `application`
 --
+
+DROP TABLE IF EXISTS `application`;
 
 CREATE TABLE `application` (
   `applicationID` int(11) NOT NULL,
@@ -47,6 +55,7 @@ INSERT INTO `application` (`applicationID`, `applicationDate`, `processedDate`, 
 --
 -- Table structure for table `college`
 --
+DROP TABLE IF EXISTS `college`;
 
 CREATE TABLE `college` (
   `collegeID` int(11) NOT NULL,
@@ -70,6 +79,7 @@ INSERT INTO `college` (`collegeID`, `collegeName`, `address`, `addedDate`) VALUE
 --
 -- Table structure for table `room`
 --
+DROP TABLE IF EXISTS `room`;
 
 CREATE TABLE `room` (
   `roomID` int(11) NOT NULL,
@@ -98,6 +108,7 @@ INSERT INTO `room` (`roomID`, `roomName`, `collegeID`, `addedDate`, `roomType`, 
 --
 -- Table structure for table `student`
 --
+DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student` (
   `studentID` int(11) NOT NULL,
@@ -119,6 +130,7 @@ INSERT INTO `student` (`studentID`, `name`, `matricNo`, `imagePath`, `applicatio
 --
 -- Table structure for table `user`
 --
+DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `userID` int(11) NOT NULL,
