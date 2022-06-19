@@ -35,7 +35,7 @@ pipeline  {
                 perfReport 'C:\\Users\\User\\Desktop\\SC project 1\\CRAS-Angular-SC\\result.xml'
             }
         }
-        stage("Deploy Docker Images to Docker Hub"){
+        stage("Deploy to Docker Hub"){
             //run Jmeter 
             //display performance report
             steps{
