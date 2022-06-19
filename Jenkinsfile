@@ -16,7 +16,7 @@ pipeline  {
             }
         }
         stage('Docker Run Container') {
-            //build docker 
+            //run docker 
             steps {
                 echo "Start running docker container"
                 bat 'docker compose down'
@@ -36,8 +36,7 @@ pipeline  {
             }
         }
         stage("Deploy to Docker Hub"){
-            //run Jmeter 
-            //display performance report
+            //deploy docker images to docker hub
             steps{
                 echo "Start deploying docker images"
                 bat 'docker compose push'
