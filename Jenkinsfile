@@ -35,5 +35,24 @@ pipeline  {
                 perfReport 'C:\\Users\\User\\Desktop\\SC project 1\\CRAS-Angular-SC\\result.xml'
             }
         }
+        stage("Update Jira"){
+            
+            steps {
+                script {
+                    def commit = sh(returnStdout: true, script: 'git log -1 --pretty=%B | cat')
+                    def regex = (/[\s|]?([A-Z]+-[0-9]+)[\s|]?/) 
+                    def matcher = (commit =~ regex)
+                    if(matcher) {
+                        def jiraIssueIdOrKey = matcher[0][0]
+                        matcher = null
+                        echo commit
+                        jiraAddComment comment: commit, idOrKey: jiraIssueIdOrKey, site: 'devops'
+                    }else {
+                        matcher = null
+                        echo "Jira issue id or key not found"
+                    }
+                }
+            }
+        }
     }
 }
