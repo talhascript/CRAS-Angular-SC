@@ -35,8 +35,15 @@ pipeline  {
                 perfReport 'C:\\Users\\User\\Desktop\\SC project 1\\CRAS-Angular-SC\\result.xml'
             }
         }
+        stage("Deploy Docker Images to Docker Hub"){
+            //run Jmeter 
+            //display performance report
+            steps{
+                echo "Start deploying docker images"
+                bat 'docker compose push'
+            }
+        }
         stage("Update Jira"){
-            
             steps {
                 script {
                     def commit = sh(returnStdout: true, script: 'git log -1 --pretty=%B | cat')
