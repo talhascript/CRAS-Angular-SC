@@ -30,16 +30,18 @@ services:
       - DB_PORT=$MYSQLDB_DOCKER_PORT
     stdin_open: true
     tty: true
-    
+    image: tanchonglim/cras-angular-sc_api
+
   ui:
     depends_on:
       - api
     build: frontend
     restart: unless-stopped
     env_file: ./.env
-    ports: 
+    ports:
       - $ANGULAR_LOCAL_PORT:$ANGULAR_DOCKER_PORT
     stdin_open: true
     tty: true
+    image: tanchonglim/cras-angular-sc_ui
 volumes:
   db:

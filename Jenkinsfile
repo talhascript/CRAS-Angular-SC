@@ -16,7 +16,7 @@ pipeline  {
             }
         }
         stage('Docker Run Container') {
-            //build docker 
+            //run docker 
             steps {
                 echo "Start running docker container"
                 bat 'docker compose up -d'
