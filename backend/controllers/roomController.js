@@ -21,15 +21,15 @@ class RoomController {
 
   addRoom = async (req, res) => {
     const collegeid = req.params["id"];
-    const { roomName, roomType, capacity } = req.body;
-    const result = await Room.post(collegeid, roomName, roomType, capacity);
+    const room = req.body;
+    const result = await Room.post(collegeid, room);
     res.json(result);
   };
 
   updateRoom = async (req, res) => {
-    const id = req.params["id"];
-    const { roomName, roomType, capacity } = req.body;
-    const result = await Room.update(id, roomName, roomType, capacity);
+    const roomId = req.params["id"];
+    const room = req.body;
+    const result = await Room.update(roomId, room);
     res.json(result);
   };
 

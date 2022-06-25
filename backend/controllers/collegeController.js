@@ -18,8 +18,8 @@ class CollegeController {
   };
 
   addCollege = async (req, res) => {
-    const { collegeName, address } = req.body;
-    const result = await College.post(collegeName, address);
+    const college = req.body;
+    const result = await College.post(college);
     res.json(result);
   };
 

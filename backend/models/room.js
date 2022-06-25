@@ -15,10 +15,10 @@ class Room {
     return this.rowToArray(rows);
   }
 
-  async post(collegeId, roomName, roomType, capacity) {
+  async post(collegeId, room) {
     const rows = await database.query(
       "INSERT INTO room(roomName,collegeID,addedDate,roomType,activated,capacity,occupied) VALUES(?,?,NOW(),?,1,?,0)",
-      [roomName, collegeId, roomType, capacity]
+      [room.roomName, collegeId, room.roomType, room.capacity]
     );
 
     return this.rowToArray(rows[0]);
@@ -32,10 +32,10 @@ class Room {
     return this.rowToArray(rows[0]);
   }
 
-  async update(id, roomName, roomType, capacity) {
+  async update(roomId, room) {
     const rows = await database.query(
       "UPDATE room SET roomName = ?, roomType = ?, capacity = ? WHERE roomID = ?",
-      [roomName, roomType, capacity, id]
+      [room.roomName, room.roomType, room.capacity, roomId]
     );
 
     return this.rowToArray(rows);

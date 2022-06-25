@@ -21,10 +21,10 @@ class College {
     return this.rowToArray(rows[0]);
   }
 
-  async post(collegename, address) {
+  async post(college) {
     const rows = await database.query(
       "INSERT INTO college(collegeName, address, addedDate) VALUES(?,?,NOW())",
-      [collegename, address]
+      [college.collegeName, college.address]
     );
 
     return this.rowToArray(rows);
