@@ -1,12 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-// example req.user:
-// {
-//   userID: 1,
-//   username: 'admin',
-//   userType: 'admin',
-//   studentID: null
-// }
+
 
 module.exports.UserAuthMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -17,11 +11,11 @@ module.exports.UserAuthMiddleware = (req, res, next) => {
       req.user = result.user;
       next();
     } catch (error) {
-      //403 forbidden (got token but now valid) / no permission
+      
       return res.sendStatus(403);
     }
   } else {
-    //401 unauthorized
+    
     return res.sendStatus(401);
   }
 };
@@ -36,11 +30,11 @@ module.exports.AdminAuthMiddleware = (req, res, next) => {
       req.user = result.user;
       next();
     } catch (error) {
-      //403 forbidden (got token but now valid) / no permission
+      
       return res.sendStatus(403);
     }
   } else {
-    //401 unauthorized
+    
     return res.sendStatus(401);
   }
 };
