@@ -1,7 +1,8 @@
 const database = require("../db");
 const crypto = require("crypto");
+const BaseModel = require("./BaseModel");
 
-class User {
+class User extends BaseModel {
   constructor() {
     if (this.instance) return this.instance;
     User.instance = this;
@@ -12,7 +13,7 @@ class User {
       "SELECT userID, username, email, addedDate, userType, studentID FROM user"
     );
 
-    return this.rowToArray(rows);
+    return super.rowToArray(rows);
   }
 
   async getById(userID) {
@@ -27,14 +28,14 @@ class User {
         [userID]
       );
 
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async getByUsername(username) {
     const rows = await database.query("SELECT * FROM user WHERE username = ?", [
       username,
     ]);
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async getByMatric(matricNo) {
@@ -42,14 +43,14 @@ class User {
       "SELECT * FROM student WHERE matricNo = ?",
       [matricNo]
     );
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async getByEmail(email) {
     const rows = await database.query("SELECT * FROM user WHERE email = ?", [
       email,
     ]);
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async register(user) {
@@ -121,11 +122,6 @@ class User {
   //   const stmt = `UPDATE todos SET ${fields.join(', ')} WHERE id = ?`
   //   return database.query(stmt, [...params, parseInt(id)])
   // }
-
-  rowToArray(sqlRows) {
-    if (!sqlRows) return null;
-    return JSON.parse(JSON.stringify(sqlRows));
-  }
 
   validatePasswordHash(password, hashedPassword, salt) {
     return (

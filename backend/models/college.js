@@ -1,6 +1,7 @@
 const database = require("../db");
+const BaseModel = require("./BaseModel");
 
-class College {
+class College extends BaseModel {
   constructor() {
     if (this.instance) return this.instance;
     College.instance = this;
@@ -9,7 +10,7 @@ class College {
   async get() {
     const rows = await database.query("SELECT * FROM college");
 
-    return this.rowToArray(rows);
+    return super.rowToArray(rows);
   }
 
   async getById(id) {
@@ -18,7 +19,7 @@ class College {
       [id]
     );
 
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async post(college) {
@@ -27,7 +28,7 @@ class College {
       [college.collegeName, college.address]
     );
 
-    return this.rowToArray(rows);
+    return super.rowToArray(rows);
   }
 
   async delete(id) {
@@ -36,7 +37,7 @@ class College {
       [id]
     );
 
-    return this.rowToArray(rows);
+    return super.rowToArray(rows);
   }
 
   async update(id, college) {
@@ -45,12 +46,7 @@ class College {
       [college.collegeName, college.address, id]
     );
 
-    return this.rowToArray(rows);
-  }
-
-  rowToArray(sqlRows) {
-    if (!sqlRows) return null;
-    return JSON.parse(JSON.stringify(sqlRows));
+    return super.rowToArray(rows);
   }
 }
 

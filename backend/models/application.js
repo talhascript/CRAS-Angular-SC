@@ -1,6 +1,7 @@
 const database = require("../db");
+const BaseModel = require("./BaseModel.js");
 
-class Application {
+class Application extends BaseModel {
   async getAllApplicationHistory() {
     const rows = await database.query(
       "SELECT * FROM application " +
@@ -38,7 +39,7 @@ class Application {
           [studentID, roomID]
         );
       }
-      return this.rowToArray(result);
+      return super.rowToArray(result);
     } catch (error) {
       throw error;
     }
@@ -51,12 +52,7 @@ class Application {
       [studentID, roomID]
     );
 
-    return this.rowToArray(rows[0]);
-  }
-
-  rowToArray(sqlRows) {
-    if (!sqlRows) return null;
-    return JSON.parse(JSON.stringify(sqlRows));
+    return super.rowToArray(rows[0]);
   }
 
   async getStudentApplicationHistory(studentID) {

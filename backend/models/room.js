@@ -1,6 +1,7 @@
 const database = require("../db");
+const BaseModel = require("./BaseModel");
 
-class Room {
+class Room extends BaseModel {
   constructor() {
     if (this.instance) return this.instance;
     Room.instance = this;
@@ -12,7 +13,7 @@ class Room {
       [id]
     );
 
-    return this.rowToArray(rows);
+    return super.rowToArray(rows);
   }
 
   async post(collegeId, room) {
@@ -21,7 +22,7 @@ class Room {
       [room.roomName, collegeId, room.roomType, room.capacity]
     );
 
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async getById(id) {
@@ -29,7 +30,7 @@ class Room {
       id,
     ]);
 
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async update(roomId, room) {
@@ -38,14 +39,14 @@ class Room {
       [room.roomName, room.roomType, room.capacity, roomId]
     );
 
-    return this.rowToArray(rows);
+    return super.rowToArray(rows);
   }
 
   async delete(id) {
     const rows = await database.query("DELETE FROM room WHERE roomID = ?", [
       id,
     ]);
-    return this.rowToArray(rows[0]);
+    return super.rowToArray(rows[0]);
   }
 
   async changeActivation(id, activated) {
@@ -54,12 +55,7 @@ class Room {
       [activated, id]
     );
 
-    return this.rowToArray(rows);
-  }
-
-  rowToArray(sqlRows) {
-    if (!sqlRows) return null;
-    return JSON.parse(JSON.stringify(sqlRows));
+    return super.rowToArray(rows);
   }
 
   async updateOccupied(id) {
@@ -68,7 +64,7 @@ class Room {
       [id]
     );
 
-    return this.rowToArray(rows);
+    return super.rowToArray(rows);
   }
 }
 
