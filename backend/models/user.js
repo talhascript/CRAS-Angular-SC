@@ -4,6 +4,7 @@ const BaseModel = require("./BaseModel");
 
 class User extends BaseModel {
   constructor() {
+    super();
     if (this.instance) return this.instance;
     User.instance = this;
   }

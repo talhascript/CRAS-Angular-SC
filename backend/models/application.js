@@ -2,6 +2,11 @@ const database = require("../db");
 const BaseModel = require("./BaseModel.js");
 
 class Application extends BaseModel {
+  constructor() {
+    super();
+    if (this.instance) return this.instance;
+    Application.instance = this;
+  }
   async getAllApplicationHistory() {
     const rows = await database.query(
       "SELECT * FROM application " +

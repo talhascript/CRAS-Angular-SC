@@ -3,6 +3,7 @@ const BaseModel = require("./BaseModel");
 
 class College extends BaseModel {
   constructor() {
+    super();
     if (this.instance) return this.instance;
     College.instance = this;
   }
