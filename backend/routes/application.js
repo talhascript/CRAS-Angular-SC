@@ -3,7 +3,7 @@ const applicationController = require("../controllers/applicationController");
 const { UserAuthMiddleware } = require("../middleware/authMiddleware");
 const router = express.Router();
 
-router.use(UserAuthMiddleware);
+// router.use(UserAuthMiddleware);
 router.get("/history/", applicationController.getAllApplicationHistory);
 router.get("/", applicationController.getAllCurrentApplication);
 router.put("/:id/", applicationController.updateApprovalApplication);
