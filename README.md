@@ -13,4 +13,15 @@ api - serve backend API using node:16-alpine <br>
 ui - serve frontend UI using nginx:1.17.1-alpine <br>
 <br>
 
-update something
+Part 2
+Code Smell 1
+- [x] Identify data clumps
+- [x] Refactoring (Introduce Parameter Object)
+
+Code Smell 2
+- [x] Identify duplicated code
+- [x] Refactoring (Extract superclass)
+
+Code Smell 3
+- [x] Identify clarification comments
+- [x] Refactoring (Removing clarification comments)
